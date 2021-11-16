@@ -42,13 +42,51 @@
 <style></style>
 
 <script>
+const axios = require("axios");
 export default {
   data: function () {
     return {
-      message: "Welcome to Vue.js!",
+      message: "Welcome to The Movies!",
+      movies: [],
+      newMovieParams: {},
+      currentMovie: {},
     };
   },
-  created: function () {},
-  methods: {},
+  created: function () {
+    this.indexMovies();
+  },
+  methods: {
+    indexMovies: function () {
+      axios.get("http://localhost:3000/movies").then((response) => {
+        this.movies = response.data;
+      });
+    },
+    createMovie: function () {
+      axios.post("http://localhost:3000/movies", this.newMovieParams).then((response) => {
+        console.log(response.data);
+        this.movies.push(response.data);
+      });
+      this.newMovieParams.title = "";
+      this.newMovieParams.plot = "";
+      this.newMovieParams.year = "";
+    },
+    showMovie: function (movie) {
+      this.currentMovie = movie;
+      console.log(movie);
+      document.querySelector("movie-details").showModal();
+    },
+    updateMovie: function (movie) {
+      axios.patch("http://localhost:3000/movies" + movie.id, movie).then((response) => {
+        console.log("Movie Created", response.data);
+      });
+    },
+    destroyMovie: function (movies) {
+      axios.delete("http://localhost:3000/movies" + movies.id).then((response) => {
+        console.log("Movie Destroyed", response.data);
+        let index = this.movies.indexOf(movies);
+        this.movies.splice(index, 1);
+      });
+    },
+  },
 };
 </script>
