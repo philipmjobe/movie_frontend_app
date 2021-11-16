@@ -6,7 +6,7 @@
     <p>Plot:</p>
     <input type="text" v-model="newMovieParams.plot" />
     <p>Year:</p>
-    <input type="integer" v-model="newMovieParams.year" />
+    <input type="text" v-model="newMovieParams.year" />
     <p>Director:</p>
     <input type="string" v-model="newMovieParams.director" />
     <p></p>
@@ -14,7 +14,7 @@
     <div v-for="movie in movies" v-bind:key="movie.id">
       <h2>{{ movie.title }}</h2>
       <p>{{ movie.plot }}</p>
-      <button v-on:click="showMovies(movie)">More Info</button>
+      <button v-on:click="showMovie(movies)">More Info</button>
       <dialog id="movie-details">
         <form method="dialog">
           <h2>Movie Info:</h2>
@@ -28,7 +28,7 @@
           </p>
           <p>
             Year:
-            <input type="integer" v-model="currentMovie.year" />
+            <input type="text" v-model="currentMovie.year" />
           </p>
           <button v-on:click="updateMovie(currentMovie)">Update Movie</button>
           <button v-on:click="destroyMovie(currentMovie)">Delete Movie</button>
@@ -73,7 +73,7 @@ export default {
     showMovie: function (movie) {
       this.currentMovie = movie;
       console.log(movie);
-      document.querySelector("movie-details").showModal();
+      document.querySelector("#movie-details").showModal();
     },
     updateMovie: function (movie) {
       axios.patch("http://localhost:3000/movies" + movie.id, movie).then((response) => {
