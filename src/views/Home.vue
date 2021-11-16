@@ -2,13 +2,13 @@
   <div class="home">
     <h1>{{ message }}</h1>
     <p>Movie Title:</p>
-    <input type="string" v-model="newMovieParams.title" />
+    <input type="text" v-model="newMovieParams.title" />
     <p>Plot:</p>
     <input type="text" v-model="newMovieParams.plot" />
     <p>Year:</p>
     <input type="text" v-model="newMovieParams.year" />
     <p>Director:</p>
-    <input type="string" v-model="newMovieParams.director" />
+    <input type="text" v-model="newMovieParams.director" />
     <p></p>
     <button v-on:click="createMovie()">Create A Movie!</button>
     <div v-for="movie in movies" v-bind:key="movie.id">
