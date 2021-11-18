@@ -1,9 +1,9 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import MoviesEdit from "../views/moviesEdit.vue";
-import MoviesShow from "../views/moviesShow.vue";
-import MoviesNew from "../views/moviesNew.vue";
+import editMovie from "../views/moviesEdit.vue";
+import showMovie from "../views/moviesShow.vue";
+import createMovie from "../views/moviesNew.vue";
 
 Vue.use(VueRouter);
 
@@ -21,9 +21,9 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ "../views/About.vue"),
   },
-  { path: "/movies/:id/edit", name: "MoviesEdit", component: MoviesEdit },
-  { path: "/movies/:id", name: "MoviesShow", component: MoviesShow },
-  { path: "/movies/new", name: "MoviesNew", component: MoviesNew },
+  { path: "/movies/:id/edit", name: "editMovie", component: editMovie },
+  { path: "/movies/:id", name: "showMovie", component: showMovie },
+  { path: "/createmovie", name: "createMovie", component: createMovie },
 ];
 
 const router = new VueRouter({
