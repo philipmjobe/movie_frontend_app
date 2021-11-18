@@ -40,12 +40,12 @@ export default {
       });
     },
     updateMovie: function (movie) {
-      axios.patch("http://localhost:3000/movies/" + movie.id, movie).then((response) => {
+      axios.patch("/movies/" + movie.id, movie).then((response) => {
         console.log("Movie Created", response.data);
       });
     },
     destroyMovie: function (movie) {
-      axios.delete("http://localhost:3000/movies/" + movie.id).then((response) => {
+      axios.delete("/movies/" + movie.id).then((response) => {
         console.log("Movie Destroyed", response.data);
         let index = this.movies.indexOf(movie);
         this.movies.splice(index, 1);

@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     createMovie: function () {
-      axios.post("http://localhost:3000/movies", this.newMovieParams).then((response) => {
+      axios.post("/movies", this.newMovieParams).then((response) => {
         console.log(response.data);
         this.movie.push(response.data);
       });
