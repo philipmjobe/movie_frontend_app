@@ -5,6 +5,8 @@
       |
       <router-link to="/createmovie">Add Movie</router-link>
       |
+      <router-link to="/movies">All Movies</router-link>
+      |
       <span v-if="isLoggedIn()">
         <router-link to="/logout">Logout</router-link>
       </span>
