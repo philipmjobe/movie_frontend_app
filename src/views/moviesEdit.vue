@@ -44,11 +44,10 @@ export default {
         console.log("Movie Created", response.data);
       });
     },
-    destroyMovie: function (movie) {
-      axios.delete("/movies/" + movie.id).then((response) => {
+    destroyMovie: function () {
+      axios.delete(`/movies/${this.$route.params.id}`).then((response) => {
         console.log("Movie Destroyed", response.data);
-        let index = this.movies.indexOf(movie);
-        this.movies.splice(index, 1);
+        this.$router.push("/movies");
       });
     },
   },
